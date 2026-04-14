@@ -24,6 +24,7 @@ Bootstrap behavior:
 What it does:
 
 - shows a basic terminal checklist where you can move with arrow keys and check/uncheck apps with space
+- starts with every app unchecked so the default posture is selective, not everything-at-once
 - installs a conservative Homebrew subset of the apps found in `/Applications`
 - installs `mas` and uses recovered Mac App Store IDs where available
 - installs a larger verified Homebrew cask subset for apps we confirmed are available in the current cask index

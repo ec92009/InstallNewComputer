@@ -154,7 +154,7 @@ class Item:
     kind: str
     key: str
     label: str
-    selected: bool = True
+    selected: bool = False
 
 
 def build_items() -> list[Item]:
