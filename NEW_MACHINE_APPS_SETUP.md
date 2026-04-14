@@ -21,6 +21,7 @@ Bootstrap behavior:
 - if `python3` is missing, it installs Homebrew Python
 - then it launches the Python TUI
 - if Homebrew is missing and the current macOS user is not an Administrator, it now stops early with a clear message instead of falling into the Homebrew installer failure loop
+- if Homebrew is missing and the user is an Administrator, the wrapper now runs `sudo -v` first so the non-interactive Homebrew installer has the credentials it needs
 
 What it does:
 

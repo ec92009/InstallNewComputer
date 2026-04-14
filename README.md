@@ -24,6 +24,7 @@ So:
 
 - do not run the setup script with `sudo`
 - if the current user is not an admin, the script now stops early with a clear message
+- if the current user is an admin and Homebrew is missing, the script will prompt once with `sudo -v` before launching the non-interactive Homebrew installer
 
 If Homebrew is already installed, the rest of the script can proceed normally.
 

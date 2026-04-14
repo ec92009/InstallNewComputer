@@ -20,12 +20,18 @@ require_admin_user_for_brew_install() {
   exit 1
 }
 
+prime_sudo_for_brew_install() {
+  echo "Requesting sudo access for Homebrew installation..."
+  sudo -v
+}
+
 ensure_brew() {
   if command -v brew >/dev/null 2>&1; then
     return
   fi
 
   require_admin_user_for_brew_install
+  prime_sudo_for_brew_install
   echo "Homebrew not found. Installing Homebrew..."
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
