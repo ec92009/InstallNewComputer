@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import argparse
 import curses
+import os
+import shutil
 import subprocess
 import sys
 from dataclasses import dataclass
@@ -240,9 +242,34 @@ def run(cmd: list[str], dry_run: bool, label: str | None = None) -> None:
         subprocess.run(cmd, check=False)
 
 
+def refresh_path_from_brew() -> None:
+    prefix = subprocess.check_output(["brew", "--prefix"], text=True).strip()
+    bin_dir = os.path.join(prefix, "bin")
+    sbin_dir = os.path.join(prefix, "sbin")
+    current = os.environ.get("PATH", "")
+    parts = current.split(":") if current else []
+    for candidate in (bin_dir, sbin_dir):
+        if candidate not in parts:
+            parts.insert(0, candidate)
+    os.environ["PATH"] = ":".join(parts)
+
+
+def ensure_formula_command(command_name: str, formula_name: str, dry_run: bool) -> None:
+    if shutil.which(command_name):
+        return
+    run(["brew", "install", formula_name], dry_run, label=f"Dependency: {formula_name}")
+    if not dry_run:
+        refresh_path_from_brew()
+
+
 def install_selected(items: list[Item], dry_run: bool) -> None:
     print("Updating Homebrew...")
     run(["brew", "update"], dry_run, label="Homebrew update")
+    if not dry_run:
+        refresh_path_from_brew()
+
+    if any(item.selected and item.kind == "mas" for item in items):
+        ensure_formula_command("mas", "mas", dry_run)
 
     for item in items:
         if not item.selected:

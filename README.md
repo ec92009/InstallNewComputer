@@ -74,6 +74,8 @@ The repo currently automates three groups:
 - Homebrew casks
 - Mac App Store apps via `mas`
 
+If you select any App Store apps, the installer now auto-installs `mas` first even if you did not explicitly check it.
+
 Anything still outside those paths is printed as a manual follow-up list.
 
 ## Related File

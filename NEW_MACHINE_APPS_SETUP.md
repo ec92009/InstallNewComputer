@@ -30,6 +30,7 @@ What it does:
 - starts with every app unchecked so the default posture is selective, not everything-at-once
 - installs a conservative Homebrew subset of the apps found in `/Applications`
 - installs `mas` and uses recovered Mac App Store IDs where available
+- auto-installs `mas` when you pick any App Store app, even if you did not check the `mas` formula explicitly
 - installs a larger verified Homebrew cask subset for apps we confirmed are available in the current cask index
 - prints a manual follow-up checklist for apps that are App Store, license-gated,
   custom/internal, or otherwise not reliable to automate through Homebrew alone
