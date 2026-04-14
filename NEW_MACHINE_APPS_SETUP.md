@@ -6,7 +6,7 @@ This repo now includes a best-effort app bootstrap script based on the current
 Scripts:
 
 ```bash
-./scripts/setup_macos_apps.sh
+bash ./scripts/setup_macos_apps.sh
 ```
 
 ```bash
@@ -16,6 +16,7 @@ python3 ./scripts/setup_macos_apps.py
 Bootstrap behavior:
 
 - `./scripts/setup_macos_apps.sh` is the preferred entrypoint
+- call it as `bash ./scripts/setup_macos_apps.sh` so it still works after a GitHub ZIP download/unzip even if the execute bit is lost
 - it is Bash-only at startup
 - if Homebrew is missing, it installs Homebrew first
 - if `python3` is missing, it installs Homebrew Python

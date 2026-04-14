@@ -7,7 +7,7 @@ Best-effort macOS app bootstrap for recreating the app set from the source machi
 Run:
 
 ```bash
-./scripts/setup_macos_apps.sh
+bash ./scripts/setup_macos_apps.sh
 ```
 
 That wrapper is intentionally Bash-first:
@@ -31,8 +31,10 @@ If Homebrew is already installed, the rest of the script can proceed normally.
 ## Interactive Usage
 
 ```bash
-./scripts/setup_macos_apps.sh
+bash ./scripts/setup_macos_apps.sh
 ```
+
+That form is intentional: after downloading and unzipping from GitHub, the shell script's execute bit may be missing.
 
 Controls:
 
